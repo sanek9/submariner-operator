@@ -653,6 +653,7 @@ spec:
           resources:
           - daemonsets
           verbs:
+          - get
           - list
         - apiGroups:
           - networking.k8s.io
@@ -661,6 +662,23 @@ spec:
           verbs:
           - get
           - list
+        - apiGroups:
+          - ""
+          resources:
+          - secrets
+          verbs:
+          - create
+        - apiGroups:
+          - ""
+          resourceNames:
+          - cilium-clustermesh
+          resources:
+          - secrets
+          verbs:
+          - get
+          - list
+          - update
+          - patch
         serviceAccountName: submariner-operator
       deployments:
       - label:
